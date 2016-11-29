@@ -8,6 +8,7 @@ import android.util.Log;
 
 public class Test {
     public void  test(){
-    Log.d("text","one");
+        Log.d("text","one");
+        Log.d("text","two");
     }
 }
