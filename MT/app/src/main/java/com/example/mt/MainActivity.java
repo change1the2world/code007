@@ -1,9 +1,11 @@
 package com.example.mt;
 
 import android.app.ActivityManager;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.jaredrummler.android.processes.AndroidProcesses;
 
@@ -24,5 +26,12 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < infos.size(); i++) {
             Log.e("MainActivity","name = "+infos.get(i).processName);
         }
+
+        findViewById(R.id.tv).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,SecondActivity.class));
+            }
+        });
     }
 }
