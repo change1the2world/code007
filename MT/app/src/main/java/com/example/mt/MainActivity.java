@@ -14,6 +14,6 @@ public class MainActivity extends AppCompatActivity {
 
         //本地新建的分支zyh_law
         TextView tv = findViewById(R.id.tv);
-        tv.setText("老高v1.1.0");
+        tv.setText("老高v1.2.0");
     }
 }
