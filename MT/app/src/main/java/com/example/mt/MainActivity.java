@@ -1,5 +1,6 @@
 package com.example.mt;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -15,12 +16,14 @@ public class MainActivity extends AppCompatActivity {
 
         //本地新建的分支zyh_law
         TextView tv = findViewById(R.id.tv);
-        tv.setText("老高v1.2.0");
+        tv.setText("Master v1.2.2");
         tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(MainActivity.this,SecondActivity.class));
             }
         });
+
+
     }
 }
