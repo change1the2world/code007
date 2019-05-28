@@ -1,10 +1,15 @@
 package com.example.mt;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.RxUtil;
+import com.example.mt.second.SecondActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,10 +25,26 @@ public class MainActivity extends AppCompatActivity {
         tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,SecondActivity.class));
+                startActivity(new Intent(MainActivity.this, SecondActivity.class));
             }
         });
 
+        RxUtil.Companion.getInstance(this).request(1, new RxUtil.RxCompletedListener() {
+            @Override
+            public void onAgree() {
+                Toast.makeText(MainActivity.this,"同意",Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onRefuse() {
+                Toast.makeText(MainActivity.this,"拒绝",Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onAskNoMore() {
+                Toast.makeText(MainActivity.this,"拒绝不再询问",Toast.LENGTH_SHORT).show();
+            }
+        },Manifest.permission.READ_PHONE_STATE);
 
     }
 }
