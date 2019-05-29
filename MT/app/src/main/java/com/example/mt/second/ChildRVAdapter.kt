@@ -23,8 +23,8 @@ class ChildRVAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
         this.str = str
     }
 
-    override fun onCreateViewHolder(p0: ViewGroup, p1: Int): RecyclerView.ViewHolder = ViewHolder(LayoutInflater
-            .from(context).inflate(R.layout.rv_child_item,null))
+    override fun onCreateViewHolder(parent: ViewGroup, p1: Int): RecyclerView.ViewHolder = ViewHolder(LayoutInflater
+            .from(context).inflate(R.layout.rv_child_item ,parent ,false)) //inflate 三个参数,设置布局宽高才管用
 
     override fun getItemCount(): Int =10
 
