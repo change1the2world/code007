@@ -6,4 +6,4 @@ package com.example.mt.bean
  *Description:
  */
 data class ResultInfo (val type : Int
-                       ,val name : String)
+                       ,var name : String)

@@ -30,14 +30,18 @@ class ChildRVAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, p: Int) {
         if (holder is ViewHolder){
-            holder.tv.text = "Hi Kotlin,$str"
-            holder.itemView.setOnClickListener {
-                Toast.makeText(context,"Hi Kotlin,$str,$p", Toast.LENGTH_SHORT).show()
+            holder.run {
+                tv.text = "Hi Kotlin,$str"
+                iv.setImageResource(R.mipmap.ic_launcher_round)
+                itemView.setOnClickListener {
+                    Toast.makeText(context,"Hi Kotlin,$str,$p", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val tv = itemView.child_tv
+        val iv = itemView.child_iv
     }
 }
