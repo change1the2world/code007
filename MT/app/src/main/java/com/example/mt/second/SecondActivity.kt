@@ -32,9 +32,16 @@ class SecondActivity : AppCompatActivity() {
 
     private fun initData() {
         list.add(ResultInfo(2,"RV——2"))
+        list.add(ResultInfo(2,"RV——2"))
         list.add(ResultInfo(2,"RV——"))
         list.add(ResultInfo(1,"RV——1"))
         list.add(ResultInfo(2,"RV——2"))
+        list.add(ResultInfo(2,"RV——2"))
+        list.add(ResultInfo(1,"RV——1"))
+        list.add(ResultInfo(2,"RV——2"))
+        list.add(ResultInfo(2,"RV——2"))
+        list.add(ResultInfo(2,"RV——2"))
+        list.add(ResultInfo(1,"RV——1"))
         list.add(ResultInfo(2,"RV——2"))
         list.add(ResultInfo(2,"RV——2"))
         rvAdapter!!.notifyDataSetChanged()
