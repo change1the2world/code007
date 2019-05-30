@@ -1,9 +1,6 @@
 package com.example.mt
 
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+
 
 /**
  *Time:2019/5/15
@@ -12,44 +9,83 @@ import kotlinx.coroutines.runBlocking
  */
 object TMain {
     var arrs = arrayOf(arrayOf("张"), arrayOf("王"), arrayOf("李"), arrayOf("赵"))
-    val num: Int = 1281
-    val number : Int = num
-    var result : Boolean = false
-    var str : String = "zhangyaohua"
+    val number: Int = 1281
+    var result: Boolean = false
+    var str: String = "zhangyaohua"
+    val str1 by lazy {
+        //用到时候初始化
+        println("time= ${System.currentTimeMillis()}")
+        "ZHANG"
+    }
+    val arr by lazy {
+        arrayOf("华", "耀", "张")
+    }
+
     @JvmStatic
     fun main(array: Array<String>) {
-        for (i in 0 until arrs.size){
+        println("Main = ${System.currentTimeMillis()}")
+        for (i in 0 until arrs.size) {
             print(arrs[i][0])
         }
         println()
-        with(arrs){
+        arrs.apply {
             println("start")
             println("frist = ${first()[0][0]}")
             println("last = ${last()[0][0]}")
             println("end")
         }
-        val apply = with(arrs) {
-                    println("start")
-                    println("frist = ${first()[0][0]}")
-                    println("last = ${last()[0][0]}")
-                }
-        println("aaa $apply")
-        result = num == number
-        println(result)
+        val with = with(arrs) {
+            println("start")
+            println("frist = ${first()[0][0]}")
+            println("last = ${last()[0][0]}")
+            1
+        }
+        println("aaa $with")
+
         val map = str.map { it.toUpperCase() }
         println(map)
 
-        main()
+//        main()
+        val fruits = listOf("banana", "avocado", "apple", "kiwifruit")
+        fruits.filter { it.startsWith("b") }
+                .map { it.toUpperCase() }
+                .forEach { println(it) }
 
-    }
+        val mapOf = mapOf(0 to "张", 1 to "耀") //只读
+        val mutableMapOf = mutableMapOf(0 to "张", 1 to "耀")
+        println(mutableMapOf)
+        mutableMapOf[2] = "华"
+        println(mutableMapOf)
 
-    fun main() = runBlocking{ // 开始执行主协程
-        val launch = GlobalScope.launch {
-            delay(10000L)
-            // 在后台启动一个新的协程并继续
-            println("World!${Thread.currentThread().name}")
+        val emails = listOf<String>() // 可能会是空集合
+        val mainEmail = emails.firstOrNull() ?: "hi"
+        println(mainEmail)
+
+        val also = arrs.also {
+            println("start")
+            println("frist = ${it.first()[0][0]}")
+            println("last = ${it.last()[0][0]}")
+            println("end")
         }
-        println("Hello,${Thread.currentThread().name}") // 主协程在这里会立即执行
-        launch.join()
+        println("also${also.size}")
+        println("${str1}str1 = ${System.currentTimeMillis()}")
+//        main()
+
+        print("" +
+                " へ 　　　　　／|\n" +
+                "        　　/＼7　　　 ∠＿/\n" +
+                "        　 /　│　　 ／　／\n" +
+                "        　│　Z ＿, ＜　／　　 /`ヽ\n" +
+                "        　│　　　　　ヽ　　 /　　〉l\n" +
+                "        　 Y　　　　　`　 /　　/\n" +
+                "        　ｲ●　､　●　　⊂⊃〈　　/\n" +
+                "        　()　 へ　　　　|　＼〈\n" +
+                "        　　>ｰ ､_　 ィ　 │ ／／\n" +
+                "        　 / へ　　 /　ﾉ＜| ＼＼\n" +
+                "        　 ヽ_ﾉ　　(_／　 │／／\n" +
+                "        　　7　　　　　　　|／\n" +
+                "        　　＞―r￣￣`ｰ―＿")
+
     }
+
 }

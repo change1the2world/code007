@@ -1,11 +1,13 @@
 package com.example.mt.second
 
 import android.os.Bundle
+import android.support.design.widget.AppBarLayout
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.OrientationHelper
+import android.view.View
 import com.example.mt.R
 import com.example.mt.bean.ResultInfo
 import kotlinx.android.synthetic.main.activity_second.*
@@ -28,6 +30,16 @@ class SecondActivity : AppCompatActivity() {
             it.adapter = rvAdapter
         }
         initData()
+
+        appBar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { _, verticalOffset ->
+            if (toolbar.height - appBar.height == verticalOffset) {
+                toolbar_tv.visibility = View.VISIBLE
+                //折叠监听
+//                Toast.makeText(this@SecondActivity,"折叠了",Toast.LENGTH_SHORT).show()
+            }else{
+                toolbar_tv.visibility = View.INVISIBLE
+            }
+        })
     }
 
     private fun initData() {
