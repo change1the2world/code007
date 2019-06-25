@@ -7,6 +7,7 @@ import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.OrientationHelper
+import android.util.Log
 import android.view.View
 import com.example.mt.R
 import com.example.mt.bean.ResultInfo
@@ -44,6 +45,7 @@ class SecondActivity : AppCompatActivity() {
         })
         HttpHelper.getInstance(this).toString()
 
+        Log.e("Main","我是3.0新加的")
         t.toString()
     }
 
