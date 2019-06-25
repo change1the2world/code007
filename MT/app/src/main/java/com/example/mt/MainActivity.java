@@ -4,14 +4,27 @@ import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
+import android.view.animation.Animation;
+import android.view.animation.BounceInterpolator;
+import android.view.animation.TranslateAnimation;
 import android.widget.Toast;
 
 import com.example.RxUtil;
+import com.example.mt.bean.PieData;
+import com.example.mt.custom.HttpHelper;
+import com.example.mt.custom.OnClickChangeListener;
 import com.example.mt.second.SecondActivity;
+import com.example.mt.widget.CustomView;
+import com.example.mt.widget.LoadingView;
+import com.example.mt.widget.PieView;
+import com.google.gson.Gson;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class MainActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,16 +32,52 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         // 添加了一行注释
 
+//        final CustomView cv = findViewById(R.id.cv);
+//        cv.setStep(3000);
+
+
+//        cv.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(MainActivity.this, SecondActivity.class));
+//            }
+//        });
         //本地新建的分支zyh_law
-        TextView tv = findViewById(R.id.tv);
+        /*final TextView tv = findViewById(R.id.tv);
         tv.setText("Master v1.2.2");
         tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                    startActivity(new Intent(MainActivity.this, TestActivity.class));
+//                    overridePendingTransition(0,0);
+                tv.startAnimation(setAnimation(20));
+            }
+        });*/
+
+        ArrayList<PieData> pieData = new ArrayList<>();
+        pieData.add(new PieData("小1",10));
+        pieData.add(new PieData("小2",20));
+        pieData.add(new PieData("小3",30));
+        pieData.add(new PieData("小4",40));
+        pieData.add(new PieData("小5",50));
+
+        HashMap<String, String> map = new HashMap<>();
+        map.put("key","value");
+        map.put("key1","value1");
+        map.put("key2","value2");
+
+        String s = new Gson().toJson(pieData);
+        Log.e("Main","s = "+s);
+
+
+        HttpHelper.Companion.getInstance(this).update();
+        LoadingView pv = findViewById(R.id.pv);
+        pv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, SecondActivity.class));
             }
         });
-
         RxUtil.Companion.getInstance(this).request(1, new RxUtil.RxCompletedListener() {
             @Override
             public void onAgree() {
@@ -47,4 +96,12 @@ public class MainActivity extends AppCompatActivity {
         },Manifest.permission.READ_PHONE_STATE);
 
     }
+    public static Animation setAnimation(int counts) {
+        Animation translateAnimation = new TranslateAnimation(0, 200, 0, 0);
+        translateAnimation.setInterpolator(new BounceInterpolator());
+        translateAnimation.setDuration(1000);
+        translateAnimation.setFillAfter(true);
+        return translateAnimation;
+    }
+
 }

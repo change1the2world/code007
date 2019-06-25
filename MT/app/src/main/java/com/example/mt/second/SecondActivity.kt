@@ -10,10 +10,12 @@ import android.support.v7.widget.OrientationHelper
 import android.view.View
 import com.example.mt.R
 import com.example.mt.bean.ResultInfo
+import com.example.mt.custom.HttpHelper
 import kotlinx.android.synthetic.main.activity_second.*
 
 class SecondActivity : AppCompatActivity() {
 
+    var t : String ? = null
     var rvAdapter : SecondRVAdapter ? = null
     val list = mutableListOf<ResultInfo>()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,6 +42,9 @@ class SecondActivity : AppCompatActivity() {
                 toolbar_tv.visibility = View.INVISIBLE
             }
         })
+        HttpHelper.getInstance(this).toString()
+
+        t.toString()
     }
 
     private fun initData() {
