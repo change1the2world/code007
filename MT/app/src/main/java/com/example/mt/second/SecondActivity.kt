@@ -45,6 +45,7 @@ class SecondActivity : AppCompatActivity() {
         })
         HttpHelper.getInstance(this).toString()
 
+        Log.e("Main","我是4.0新加的")
         Log.e("Main","我是3.0新加的")
         Log.e("Master","I'm master")
         t.toString()
