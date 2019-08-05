@@ -47,7 +47,7 @@ class SecondActivity : AppCompatActivity() {
 
         Log.e("Main","我是4.0新加的")
         Log.e("Main","我是3.0新加的")
-        Log.e("Master","I'm master")
+        Log.e("Master","I'm master 测试")
         t.toString()
     }
 
