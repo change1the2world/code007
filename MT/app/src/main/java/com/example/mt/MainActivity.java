@@ -14,18 +14,26 @@ import android.widget.Toast;
 import com.example.RxUtil;
 import com.example.mt.bean.PieData;
 import com.example.mt.custom.HttpHelper;
-import com.example.mt.custom.OnClickChangeListener;
+import com.example.mt.imp.TestInterface;
 import com.example.mt.second.SecondActivity;
-import com.example.mt.widget.CustomView;
 import com.example.mt.widget.LoadingView;
-import com.example.mt.widget.PieView;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
 public class MainActivity extends AppCompatActivity{
 
+    @Inject
+    PieData pieData;
+    @Named("first")
+    @Inject
+    TestInterface interfaceImp;
+//    @Inject
+//    Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +62,11 @@ public class MainActivity extends AppCompatActivity{
             }
         });*/
 
+//        DaggerTestCommponent.builder().testModule(new TestModule()).build().inject(this);
+
+        App.Companion.getApp().getTestCommponent().inject(this);
+
+        Log.e("TAG","PieData = "+pieData.toString()+", TestInterface = "+interfaceImp.getTestInfo());
         ArrayList<PieData> pieData = new ArrayList<>();
         pieData.add(new PieData("小1",10));
         pieData.add(new PieData("小2",20));
