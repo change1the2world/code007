@@ -12,7 +12,9 @@ import android.view.animation.TranslateAnimation;
 import android.widget.Toast;
 
 import com.example.RxUtil;
+import com.example.mt.bean.PieData;
 import com.example.mt.custom.HttpHelper;
+import com.example.mt.imp.TestInterface;
 import com.example.mt.second.SecondActivity;
 import com.example.mt.widget.LoadingView;
 import com.google.gson.Gson;
@@ -20,8 +22,18 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
 public class MainActivity extends AppCompatActivity{
 
+    @Inject
+    PieData pieData;
+    @Named("first")
+    @Inject
+    TestInterface interfaceImp;
+//    @Inject
+//    Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +62,17 @@ public class MainActivity extends AppCompatActivity{
             }
         });*/
 
+//        DaggerTestCommponent.builder().testModule(new TestModule()).build().inject(this);
 
+        App.Companion.getApp().getTestCommponent().inject(this);
+
+        Log.e("TAG","PieData = "+pieData.toString()+", TestInterface = "+interfaceImp.getTestInfo());
+        ArrayList<PieData> pieData = new ArrayList<>();
+        pieData.add(new PieData("小1",10));
+        pieData.add(new PieData("小2",20));
+        pieData.add(new PieData("小3",30));
+        pieData.add(new PieData("小4",40));
+        pieData.add(new PieData("小5",50));
 
         HashMap<String, String> map = new HashMap<>();
         map.put("key","value");
