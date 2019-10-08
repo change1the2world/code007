@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="QQStepView">
+        <attr name="outerColor" format="color" />
+        <attr name="innerColor" format="color" />
+        <attr name="borderWidth" format="dimension" />
+        <attr name="stepTextSize" format="dimension" />
+        <attr name="stepTextColor" format="color" />
+    </declare-styleable>
+    <declare-styleable name="CircularLoadingView">
+        <attr name="base_color" format="color" />
+        <attr name="progress_color" format="color" />
+        <attr name="max" format="float" />
+        <attr name="min" format="float" />
+        <attr name="duration" format="integer" />
+        <attr name="progress_stroke_width" format="integer" />
+        <attr name="argQuantity" format="integer" />
+        <attr name="ratio" format="float" />
+    </declare-styleable>
+</resources>
