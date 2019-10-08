@@ -12,13 +12,9 @@ import android.view.animation.TranslateAnimation;
 import android.widget.Toast;
 
 import com.example.RxUtil;
-import com.example.mt.bean.PieData;
 import com.example.mt.custom.HttpHelper;
-import com.example.mt.custom.OnClickChangeListener;
 import com.example.mt.second.SecondActivity;
-import com.example.mt.widget.CustomView;
 import com.example.mt.widget.LoadingView;
-import com.example.mt.widget.PieView;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -54,23 +50,13 @@ public class MainActivity extends AppCompatActivity{
             }
         });*/
 
-        ArrayList<PieData> pieData = new ArrayList<>();
-        pieData.add(new PieData("小1",10));
-        pieData.add(new PieData("小2",20));
-        pieData.add(new PieData("小3",30));
-        pieData.add(new PieData("小4",40));
-        pieData.add(new PieData("小5",50));
+
 
         HashMap<String, String> map = new HashMap<>();
         map.put("key","value");
         map.put("key1","value1");
         map.put("key2","value2");
 
-        String s = new Gson().toJson(pieData);
-        Log.e("Main","s = "+s);
-
-
-        HttpHelper.Companion.getInstance(this).update();
         LoadingView pv = findViewById(R.id.pv);
         pv.setOnClickListener(new View.OnClickListener() {
             @Override
